@@ -218,106 +218,109 @@ class CouponCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        children: [
-          Container(
-            width: 64,
-            height: 170,
-            decoration: const BoxDecoration(
-              color: Color(0xFFB86339),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(18),
-                bottomLeft: Radius.circular(18),
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              width: 64,
+              decoration: const BoxDecoration(
+                color: Color(0xFFB86339),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(18),
+                  bottomLeft: Radius.circular(18),
+                ),
               ),
-            ),
-            child: Center(
-              child: RotatedBox(
-                quarterTurns: 3,
-                child: Text(
-                  coupon.amount,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
+              child: Center(
+                child: RotatedBox(
+                  quarterTurns: 3,
+                  child: Text(
+                    coupon.amount,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        coupon.title,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w800,
-                          color: Color(0xFF3A332B),
-                        ),
-                      ),
-                      const Spacer(),
-                      TextButton.icon(
-                        style: TextButton.styleFrom(
-                          backgroundColor: const Color(0x14B86339),
-                          foregroundColor: const Color(0xFFB86339),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
+            Expanded(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          coupon.title,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                            color: Color(0xFF3A332B),
                           ),
                         ),
-                        onPressed: onApply,
-                        icon: const Icon(Icons.sell_outlined, size: 16),
-                        label: const Text(
-                          'Apply',
-                          style: TextStyle(fontWeight: FontWeight.w700),
+                        const Spacer(),
+                        TextButton.icon(
+                          style: TextButton.styleFrom(
+                            backgroundColor: const Color(0x14B86339),
+                            foregroundColor: const Color(0xFFB86339),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                          ),
+                          onPressed: onApply,
+                          icon: const Icon(Icons.sell_outlined, size: 16),
+                          label: const Text(
+                            'Apply',
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      coupon.description,
+                      style: const TextStyle(
+                        color: Color(0xFF6E655F),
+                        fontSize: 14,
+                        height: 1.5,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      height: 1,
+                      color: const Color(0xFFE7DFDA),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      coupon.finePrint,
+                      style: const TextStyle(
+                        color: Color(0xFF9C8E85),
+                        fontSize: 12,
+                        height: 1.4,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    GestureDetector(
+                      onTap: onReadMore,
+                      child: const Text(
+                        'Read more',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF4B463E),
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    coupon.description,
-                    style: const TextStyle(
-                      color: Color(0xFF6E655F),
-                      fontSize: 14,
-                      height: 1.5,
                     ),
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
-                    height: 1,
-                    color: const Color(0xFFE7DFDA),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    coupon.finePrint,
-                    style: const TextStyle(
-                      color: Color(0xFF9C8E85),
-                      fontSize: 12,
-                      height: 1.4,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  GestureDetector(
-                    onTap: onReadMore,
-                    child: const Text(
-                      'Read more',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFF4B463E),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
